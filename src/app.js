@@ -206,4 +206,9 @@ document.querySelector('#newOrderButton').addEventListener('click', simulateOrde
 document.querySelector('#refreshButton').addEventListener('click', renderAll);
 setupFilters();
 setupNav();
-renderAll();
+loadDashboardData()
+  .then(renderAll)
+  .catch(error => {
+    console.error("Dashboard API error:", error);
+    renderAll();
+  });
