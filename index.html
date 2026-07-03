@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DCW Grows Command Center</title>
+  <meta name="description" content="Ordering hub, sales dashboard, inventory tracker, and marketing command center for DCW Grows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="brand-icon">🌱</div>
+        <div>
+          <p class="eyebrow">DCW Grows</p>
+          <h1>Command Center</h1>
+        </div>
+      </div>
+
+      <nav class="nav-list" aria-label="Dashboard sections">
+        <a href="#overview" class="nav-link active">Overview</a>
+        <a href="#orders" class="nav-link">Order Hub</a>
+        <a href="#inventory" class="nav-link">Inventory</a>
+        <a href="#marketing" class="nav-link">Marketing</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
+        <a href="#report" class="nav-link">CEO Report</a>
+      </nav>
+
+      <div class="sidebar-card">
+        <p class="small-label">Etsy Sales Goal</p>
+        <strong id="goalText">794 / 1,000</strong>
+        <div class="progress-track"><span id="goalProgress"></span></div>
+        <p class="muted">Next milestone: 1,000 DCW Grows sales.</p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Live business snapshot</p>
+          <h2>Ordering Hub + Sales Intelligence</h2>
+        </div>
+        <div class="topbar-actions">
+          <button id="refreshButton" class="ghost-button">Refresh mock data</button>
+          <button id="newOrderButton" class="primary-button">+ Simulate Order</button>
+        </div>
+      </header>
+
+      <section id="overview" class="section-grid overview-grid"></section>
+
+      <section class="panel split-panel">
+        <div>
+          <p class="eyebrow">Action queue</p>
+          <h3>Today needs attention</h3>
+        </div>
+        <div id="alerts" class="alert-list"></div>
+      </section>
+
+      <section id="orders" class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Etsy + Shopify</p>
+            <h3>Order Hub</h3>
+          </div>
+          <div class="filters">
+            <button class="filter active" data-filter="all">All</button>
+            <button class="filter" data-filter="Etsy">Etsy</button>
+            <button class="filter" data-filter="Shopify">Shopify</button>
+            <button class="filter" data-filter="New">New</button>
+            <button class="filter" data-filter="Packed">Packed</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Platform</th>
+                <th>Customer</th>
+                <th>Item</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="inventory" class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Plants + products</p>
+            <h3>Inventory Tracker</h3>
+          </div>
+          <span class="pill warning" id="lowStockCount">0 low stock</span>
+        </div>
+        <div id="inventoryGrid" class="inventory-grid"></div>
+      </section>
+
+      <section id="marketing" class="section-grid two-col">
+        <div class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Sales attribution</p>
+              <h3>What is helping sales?</h3>
+            </div>
+          </div>
+          <div id="sourceBars" class="source-bars"></div>
+        </div>
+        <div class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Product leaderboard</p>
+              <h3>Best sellers</h3>
+            </div>
+          </div>
+          <div id="leaderboard" class="leaderboard"></div>
+        </div>
+      </section>
+
+      <section id="reviews" class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Customer love</p>
+            <h3>Review Dashboard</h3>
+          </div>
+          <span class="pill success">4.8 avg rating</span>
+        </div>
+        <div id="reviewsList" class="reviews-list"></div>
+      </section>
+
+      <section id="report" class="panel report-panel">
+        <p class="eyebrow">Weekly CEO Report</p>
+        <h3>What happened this week</h3>
+        <div id="ceoReport" class="report-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="src/data.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>

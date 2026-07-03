@@ -1,0 +1,13 @@
+{
+  "name": "dcw-grows-command-center",
+  "version": "1.0.0",
+  "description": "DCW Grows ordering hub and sales dashboard starter app.",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 5173",
+    "serve": "python3 -m http.server 5173"
+  },
+  "keywords": ["dcw-grows", "etsy", "shopify", "dashboard", "orders", "inventory"],
+  "author": "DCW Grows",
+  "license": "MIT"
+}
