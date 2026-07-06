@@ -541,7 +541,6 @@ function renderAll() {
   renderOverview();
   renderGoal();
   renderOrders();
-  renderShippingHub();
   renderSalesIntelligence();
   renderInventory();
   renderAlerts();
