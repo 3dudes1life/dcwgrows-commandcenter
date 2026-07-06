@@ -6,7 +6,8 @@ let dashboardData = {
   inventory: [],
   sources: [],
   products: [],
-  reviews: []
+  reviews: [],
+  businessIq: {}
 };
 
 function jsonp(action) {
@@ -32,9 +33,10 @@ function jsonp(action) {
 }
 
 async function loadDashboardData() {
-  const [ordersData, statsData] = await Promise.all([
+  const [ordersData, statsData, businessIqData] = await Promise.all([
     jsonp("orders"),
-    jsonp("stats")
+    jsonp("stats"),
+    jsonp("businessIq")
   ]);
 
   dashboardData.orders = ordersData.orders || [];
@@ -42,6 +44,7 @@ async function loadDashboardData() {
   dashboardData.sources = statsData.sources || [];
   dashboardData.inventory = statsData.inventory || [];
   dashboardData.reviews = statsData.reviews || [];
+  dashboardData.businessIq = businessIqData || {};
   dashboardData.products = statsData.products || buildProductsFromOrders(dashboardData.orders);
 }
 
