@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -13,15 +13,15 @@
   <meta name="apple-mobile-web-app-title" content="DCW Grows" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" href="icon-192.png" type="image/png" />
-  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <meta property="og:image" content="https://3dudes1life.github.io/dcwgrows-commandcenter/icon-512.png" />
+  <link rel="manifest" href="manifest.webmanifest?v=1.2" />
+  <link rel="icon" href="icon-192.png?v=1.2" type="image/png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=1.2" />
+  <meta property="og:image" content="https://3dudes1life.github.io/dcwgrows-commandcenter/icon-512.png?v=1.2" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/styles.css" />
+  <link rel="stylesheet" href="src/styles.css?v=1.2" />
 </head>
 <body>
   <div class="app-shell">
@@ -37,7 +37,6 @@
       <nav class="nav-list" aria-label="Dashboard sections">
         <a href="#overview" class="nav-link active">Overview</a>
         <a href="#orders" class="nav-link">Order Hub</a>
-        <a href="#shipping" class="nav-link">Shipping Hub</a>
         <a href="#sales-intel" class="nav-link">Sales IQ</a>
         <a href="#inventory" class="nav-link">Inventory</a>
         <a href="#marketing" class="nav-link">Marketing</a>
@@ -61,7 +60,7 @@
         </div>
         <div class="topbar-actions">
           <button id="refreshButton" class="ghost-button">Refresh dashboard</button>
-          <button id="printAllButton" class="primary-button">Print packing slips</button>
+          <button id="printAllButton" class="primary-button">Print unshipped slips</button>
           <button id="newOrderButton" class="primary-button" style="display:none;">+ Simulate Order</button>
         </div>
       </header>
@@ -79,7 +78,7 @@
       <section id="orders" class="panel">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Etsy + Shopify</p>
+            <p class="eyebrow">Etsy + Shipping</p>
             <h3>Order Hub</h3>
           </div>
           <div class="filters">
@@ -109,17 +108,6 @@
             <tbody id="ordersTable"></tbody>
           </table>
         </div>
-      </section>
-
-      <section id="shipping" class="panel">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Shipping Hub Lite</p>
-            <h3>Pull, pack, and print</h3>
-          </div>
-          <button class="ghost-button" data-action="print-unshipped">Print unshipped slips</button>
-        </div>
-        <div id="shippingList" class="leaderboard"></div>
       </section>
 
       <section id="sales-intel" class="panel">
@@ -197,7 +185,7 @@
     </main>
   </div>
 
-  <script src="src/data.js"></script>
-  <script src="src/app.js"></script>
+  <script src="src/data.js?v=1.2"></script>
+  <script src="src/app.js?v=1.2"></script>
 </body>
 </html>
