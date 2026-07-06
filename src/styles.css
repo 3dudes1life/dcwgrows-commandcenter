@@ -325,3 +325,110 @@ th { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-
   .report-grid { grid-template-columns: 1fr; }
   .alert-item { grid-template-columns: 1fr; }
 }
+@media (max-width: 720px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .app-shell {
+    display: block;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: auto;
+    padding: calc(14px + env(safe-area-inset-top)) 14px 12px;
+  }
+
+  .brand-block {
+    margin-bottom: 12px;
+  }
+
+  .brand-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    font-size: 24px;
+  }
+
+  .nav-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-link {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 10px 12px;
+  }
+
+  .sidebar-card {
+    padding: 14px;
+  }
+
+  .main-content {
+    padding: 16px 14px 28px;
+  }
+
+  .topbar {
+    gap: 14px;
+  }
+
+  h2 {
+    font-size: 2.1rem;
+    line-height: 0.95;
+  }
+
+  .panel,
+  .metric-card,
+  .inventory-card,
+  .review-card {
+    border-radius: 20px;
+  }
+
+  .overview-grid,
+  .two-col,
+  .inventory-grid,
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-card strong {
+    font-size: 2rem;
+  }
+
+  .split-panel,
+  .section-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .alert-item {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .filter {
+    flex: 0 0 auto;
+  }
+
+  .table-wrap {
+    margin: 0 -8px;
+    padding: 0 8px;
+  }
+
+  table {
+    min-width: 720px;
+  }
+}
