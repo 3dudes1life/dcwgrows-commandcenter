@@ -203,8 +203,9 @@ function renderAll() {
 }
 
 document.querySelector('#newOrderButton').addEventListener('click', simulateOrder);
-document.querySelector('#refreshButton').addEventListener('click', renderAll);
-setupFilters();
+document.querySelector('#refreshButton').addEventListener('click', () => {
+  loadDashboardData().then(renderAll);
+});setupFilters();
 setupNav();
 loadDashboardData()
   .then(renderAll)
