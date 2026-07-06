@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbyTxolAcNcnB1quGqPz6RQuhAxTXOrn34FmYfdx0VKtzOktU6k23f7rkO4nwWW3Gqv4iA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbx1k2PAdwAAo228nFL9Na1LHOOyT2MUSgDCHxvoxbc0-iu-8NkLqyfPndqpcqNPWLuP/exec";
 
 let dashboardData = {
   goal: { current: 794, target: 1000 },
