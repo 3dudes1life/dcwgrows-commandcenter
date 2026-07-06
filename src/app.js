@@ -297,7 +297,81 @@ function renderSalesIntelligence() {
     `).join("")
     : `<p class="muted">No customer data yet.</p>`;
 }
+function renderBusinessIq() {
+  const iq = dashboardData.businessIq || {};
 
+  if (!iq || iq.status !== "ok") {
+    document.querySelector("#businessIqCards").innerHTML = `<p class="muted">Business IQ data is loading or unavailable.</p>`;
+    return;
+  }
+
+  const cards = [
+    { title: "Lifetime Revenue", body: formatMoney(iq.lifetimeRevenue) },
+    { title: "Lifetime Net", body: formatMoney(iq.lifetimeNet) },
+    { title: "Lifetime Orders", body: `${iq.lifetimeOrders || 0} Etsy orders` },
+    { title: "Average Order", body: formatMoney(iq.averageOrder) },
+    { title: "Repeat Customers", body: `${iq.repeatCustomers || 0} repeat buyers` },
+    { title: "Best Year", body: iq.bestYear ? `${iq.bestYear.year} · ${formatMoney(iq.bestYear.revenue)}` : "Not enough data yet" }
+  ];
+
+  document.querySelector("#businessIqCards").innerHTML = cards.map(card => `
+    <article>
+      <h4>${escapeHtml(card.title)}</h4>
+      <p>${escapeHtml(card.body)}</p>
+    </article>
+  `).join("");
+
+  const years = iq.revenueByYear || [];
+  const maxYearRevenue = Math.max(...years.map(year => Number(year.revenue || 0)), 1);
+
+  document.querySelector("#yearBreakdown").innerHTML = years.length
+    ? years.map(year => `
+      <div class="source-row">
+        <div class="source-meta">
+          <strong>${escapeHtml(year.year)}</strong>
+          <span>${year.orders} orders · ${formatMoney(year.revenue)} revenue · ${formatMoney(year.net)} net</span>
+        </div>
+        <div class="bar-track"><span style="width: ${(Number(year.revenue || 0) / maxYearRevenue) * 100}%"></span></div>
+      </div>
+    `).join("")
+    : `<p class="muted">No yearly revenue data yet.</p>`;
+
+  document.querySelector("#stateBreakdown").innerHTML = (iq.topStates || []).length
+    ? iq.topStates.map((state, index) => `
+      <div class="leaderboard-row">
+        <span class="rank">#${index + 1}</span>
+        <div>
+          <strong>${escapeHtml(state.state)}</strong>
+          <p>${state.orders} orders · ${formatMoney(state.revenue)}</p>
+        </div>
+      </div>
+    `).join("")
+    : `<p class="muted">No state data yet.</p>`;
+
+  document.querySelector("#categoryIqBreakdown").innerHTML = (iq.topCategories || []).length
+    ? iq.topCategories.map((category, index) => `
+      <div class="leaderboard-row">
+        <span class="rank">#${index + 1}</span>
+        <div>
+          <strong>${escapeHtml(category.name)}</strong>
+          <p>${category.orders} orders · ${category.quantity} sold · ${formatMoney(category.revenue)}</p>
+        </div>
+      </div>
+    `).join("")
+    : `<p class="muted">No category data yet.</p>`;
+
+  document.querySelector("#productIqBreakdown").innerHTML = (iq.topProducts || []).length
+    ? iq.topProducts.map((product, index) => `
+      <div class="leaderboard-row">
+        <span class="rank">#${index + 1}</span>
+        <div>
+          <strong>${escapeHtml(product.name)}</strong>
+          <p>${product.orders} orders · ${product.quantity} sold · ${formatMoney(product.revenue)}</p>
+        </div>
+      </div>
+    `).join("")
+    : `<p class="muted">No product data yet.</p>`;
+}
 function renderInventory() {
   const lowStock = dashboardData.inventory.filter(item =>
     Number(item.available || 0) <= Number(item.reorderAt || 0)
@@ -542,6 +616,7 @@ function renderAll() {
   renderGoal();
   renderOrders();
   renderSalesIntelligence();
+  renderBusinessIq();
   renderInventory();
   renderAlerts();
   renderSources();
