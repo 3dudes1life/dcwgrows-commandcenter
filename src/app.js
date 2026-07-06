@@ -202,11 +202,18 @@ function renderAll() {
   renderReport();
 }
 
-document.querySelector('#newOrderButton').addEventListener('click', simulateOrder);
-document.querySelector('#refreshButton').addEventListener('click', () => {
-  loadDashboardData().then(renderAll);
-});setupFilters();
+const refreshButton = document.querySelector('#refreshButton');
+
+if (refreshButton) {
+  refreshButton.addEventListener('click', async () => {
+    await loadDashboardData();
+    renderAll();
+  });
+}
+
+setupFilters();
 setupNav();
+
 loadDashboardData()
   .then(renderAll)
   .catch(error => {
