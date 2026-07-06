@@ -61,7 +61,14 @@ body {
   font-size: 28px;
   box-shadow: var(--shadow);
 }
-
+.brand-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  flex-shrink: 0;
+}
 .eyebrow,
 .small-label {
   margin: 0 0 6px;
