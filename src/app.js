@@ -199,28 +199,38 @@ function renderShippingHub() {
   const activeOrders = orders.filter(order => effectiveStatus(order) !== "Shipped");
 
   document.querySelector("#shippingList").innerHTML = activeOrders.length
-    ? activeOrders.map(order => {
-      const status = effectiveStatus(order);
+    ? `
+      <div class="shipping-queue">
+        ${activeOrders.map(order => {
+          const status = effectiveStatus(order);
 
-      return `
-        <div class="leaderboard-row">
-          <span class="rank">${status === "Packed" ? "✓" : "📦"}</span>
-          <div>
-            <strong>${escapeHtml(order.id)} · ${escapeHtml(order.customer)}</strong>
-            <p>${escapeHtml(order.item)} · ${formatMoney(order.total)} · ${escapeHtml(status)}</p>
-          </div>
-          <div class="filters">
-            <button class="ghost-button" data-action="print-slip" data-order-id="${escapeHtml(order.id)}">Print</button>
-            ${
-              status === "Packed"
-                ? `<button class="ghost-button" data-action="unpack" data-order-id="${escapeHtml(order.id)}">Undo Packed</button>`
-                : `<button class="primary-button" data-action="pack" data-order-id="${escapeHtml(order.id)}">Mark Packed</button>`
-            }
-          </div>
-        </div>
-      `;
-    }).join("")
-    : `<p class="muted">No active orders need packing. Look at you being responsible.</p>`;
+          return `
+            <article class="shipping-card">
+              <div class="shipping-main">
+                <strong>${escapeHtml(order.id)}</strong>
+                <span>${escapeHtml(order.customer)}</span>
+                <p>${escapeHtml(order.item)}</p>
+              </div>
+
+              <div class="shipping-meta">
+                <strong>${formatMoney(order.total)}</strong>
+                <span class="status ${statusClass(status)}">${escapeHtml(status)}</span>
+              </div>
+
+              <div class="shipping-actions">
+                <button class="ghost-button" data-action="print-slip" data-order-id="${escapeHtml(order.id)}">Print</button>
+                ${
+                  status === "Packed"
+                    ? `<button class="ghost-button" data-action="unpack" data-order-id="${escapeHtml(order.id)}">Undo</button>`
+                    : `<button class="primary-button" data-action="pack" data-order-id="${escapeHtml(order.id)}">Packed</button>`
+                }
+              </div>
+            </article>
+          `;
+        }).join("")}
+      </div>
+    `
+    : `<p class="muted">No active orders need packing.</p>`;
 }
 
 function renderSalesIntelligence() {
