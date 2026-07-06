@@ -1,5 +1,5 @@
-<!DOCTYPE html> 
-<html lang="en"> 
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -37,6 +37,8 @@
       <nav class="nav-list" aria-label="Dashboard sections">
         <a href="#overview" class="nav-link active">Overview</a>
         <a href="#orders" class="nav-link">Order Hub</a>
+        <a href="#shipping" class="nav-link">Shipping Hub</a>
+        <a href="#sales-intel" class="nav-link">Sales IQ</a>
         <a href="#inventory" class="nav-link">Inventory</a>
         <a href="#marketing" class="nav-link">Marketing</a>
         <a href="#reviews" class="nav-link">Reviews</a>
@@ -45,7 +47,7 @@
 
       <div class="sidebar-card">
         <p class="small-label">Etsy Sales Goal</p>
-        <strong id="goalText">Loading...</strong>        
+        <strong id="goalText">Loading...</strong>
         <div class="progress-track"><span id="goalProgress"></span></div>
         <p class="muted">Next milestone: 1,000 DCW Grows sales.</p>
       </div>
@@ -58,8 +60,9 @@
           <h2>Ordering Hub + Sales Intelligence</h2>
         </div>
         <div class="topbar-actions">
-          <button id="refreshButton" class="ghost-button">Refresh dashboard</button>          
-          <button id="newOrderButton" class="primary-button" style="display:none;">+ Simulate Order</button>        
+          <button id="refreshButton" class="ghost-button">Refresh dashboard</button>
+          <button id="printAllButton" class="primary-button">Print packing slips</button>
+          <button id="newOrderButton" class="primary-button" style="display:none;">+ Simulate Order</button>
         </div>
       </header>
 
@@ -85,8 +88,10 @@
             <button class="filter" data-filter="Shopify">Shopify</button>
             <button class="filter" data-filter="New">New</button>
             <button class="filter" data-filter="Packed">Packed</button>
+            <button class="filter" data-filter="Shipped">Shipped</button>
           </div>
         </div>
+
         <div class="table-wrap">
           <table>
             <thead>
@@ -98,10 +103,45 @@
                 <th>Total</th>
                 <th>Status</th>
                 <th>Source</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody id="ordersTable"></tbody>
           </table>
+        </div>
+      </section>
+
+      <section id="shipping" class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Shipping Hub Lite</p>
+            <h3>Pull, pack, and print</h3>
+          </div>
+          <button class="ghost-button" data-action="print-unshipped">Print unshipped slips</button>
+        </div>
+        <div id="shippingList" class="leaderboard"></div>
+      </section>
+
+      <section id="sales-intel" class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Sales Intelligence</p>
+            <h3>What the latest orders are telling us</h3>
+          </div>
+        </div>
+
+        <div id="salesIntelligenceCards" class="report-grid"></div>
+
+        <div class="section-grid two-col" style="margin-top:18px;margin-bottom:0;">
+          <div>
+            <p class="small-label">Revenue by category</p>
+            <div id="categoryBreakdown" class="source-bars"></div>
+          </div>
+
+          <div>
+            <p class="small-label">Repeat customer watch</p>
+            <div id="customerBreakdown" class="leaderboard"></div>
+          </div>
         </div>
       </section>
 
@@ -126,6 +166,7 @@
           </div>
           <div id="sourceBars" class="source-bars"></div>
         </div>
+
         <div class="panel">
           <div class="section-heading">
             <div>
