@@ -43,10 +43,10 @@ function jsonp(action) {
 
 async function loadDashboardData() {
   try {
-    const [ordersData, statsData] = await Promise.all([
-      jsonp("mockOrders"),
-      jsonp("mockStats")
-    ]);
+  const [ordersData, statsData] = await Promise.all([
+  jsonp("orders"),
+  jsonp("stats")
+  ]);
 
     dashboardData.orders = ordersData.orders || dashboardData.orders;
     dashboardData.goal = statsData.goal || dashboardData.goal;
