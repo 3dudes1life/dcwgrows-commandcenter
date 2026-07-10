@@ -1,0 +1,47 @@
+DCW GROWS PHASE 1 CLOUD SYNC — INDEX.HTML CHANGES
+
+1. In <head>, directly after the existing styles.css line, add:
+
+<link rel="stylesheet" href="src/cloud-sync.css?v=cloud1" />
+
+2. In the sidebar, directly after the Etsy Sales Goal sidebar-card, add:
+
+<div class="sidebar-card cloud-sync-card">
+  <p class="small-label">Shared Device Sync</p>
+  <span id="cloudSyncPill" class="sync-pill setup">Connect cloud</span>
+  <p id="cloudSyncDetail" class="muted">Enter the private sync key once.</p>
+  <input id="cloudSyncKey" type="password" placeholder="Private sync key" autocomplete="off" />
+  <div class="cloud-sync-actions">
+    <button id="connectCloudButton" class="primary-button" type="button">Connect</button>
+    <button id="pullCloudButton" class="ghost-button" type="button">Pull</button>
+    <button id="copyPairButton" class="ghost-button" type="button">Copy Pair Link</button>
+  </div>
+</div>
+
+3. Replace the script block at the bottom:
+
+<script src="src/data.js?v=1.4"></script>
+<script src="src/app.js?v=1.4"></script>
+
+with:
+
+<script src="src/config.js?v=cloud1"></script>
+<script src="src/cloud-sync.js?v=cloud1"></script>
+<script src="src/data.js?v=1.5"></script>
+<script src="src/app.js?v=1.5"></script>
+<script src="src/cloud-bridge.js?v=cloud1"></script>
+
+4. Upload the four files in this ZIP into the repo's src folder:
+- src/config.js
+- src/cloud-sync.js
+- src/cloud-bridge.js
+- src/cloud-sync.css
+
+5. After GitHub Pages finishes deploying:
+- Open the dashboard on your main device.
+- Enter the SAME private Cloudflare sync key used by the podcast dashboard.
+- Click Connect.
+- Click Copy Pair Link.
+- Open that link on each other device.
+- Mark an order Packed on one device.
+- On another device, click Pull or wait up to 60 seconds.

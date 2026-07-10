@@ -1,0 +1,63 @@
+.cloud-sync-card {
+  margin-top: 14px;
+}
+
+.cloud-sync-card input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255,255,255,.85);
+  color: var(--ink);
+  font: inherit;
+}
+
+.cloud-sync-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cloud-sync-actions button {
+  padding: 9px 11px;
+  font-size: .78rem;
+}
+
+.sync-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 99px;
+  padding: 6px 10px;
+  font-size: .75rem;
+  font-weight: 800;
+  background: #fff0c7;
+  color: #8a5a00;
+}
+
+.sync-pill.synced {
+  background: #dbf4dc;
+  color: #20652a;
+}
+
+.sync-pill.saving,
+.sync-pill.syncing {
+  background: #dff3ff;
+  color: #075985;
+}
+
+.sync-pill.offline,
+.sync-pill.conflict {
+  background: #ffe0dc;
+  color: #9f2d24;
+}
+
+.sync-pill.setup,
+.sync-pill.empty {
+  background: #e6ddff;
+  color: #5835a3;
+}
+
+#cloudSyncDetail {
+  margin: 8px 0 0;
+}
